@@ -12,68 +12,121 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Yartu',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: 'Manrope'),
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(28.0),
-            child: Column(
-              children: <Widget>[
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Container(
-                    width: 200,
-                    margin: const EdgeInsets.fromLTRB(5.0, 21.0, 0.0, 12.0),
-                    child: Image.asset('images/yartu.png'),
-                  ),
+      theme: ThemeData(
+        fontFamily: 'Manrope',
+      ),
+      home: const MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(42.0),
+          child: Column(
+            children: <Widget>[
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Container(
+                  width: 200,
+                  margin: const EdgeInsets.fromLTRB(5.0, 14.0, 0.0, 12.0),
+                  child: Image.asset('images/yartu.png'),
                 ),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Container(
-                    width: 81,
-                    height: 40,
-                    margin: const EdgeInsets.fromLTRB(5.0, 8.0, 0.0, 8.0),
-                    child: const Text(
-                      'Sign In',
-                      style: TextStyle(
-                        color: Color(0XFF394C66),
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.w800,
-                        fontSize: 24,
-                        height: 1.67,
-                      ),
+              ),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Container(
+                  width: 81,
+                  height: 40,
+                  margin: const EdgeInsets.fromLTRB(5.0, 8.0, 0.0, 8.0),
+                  child: const Text(
+                    'Sign In',
+                    style: TextStyle(
+                      color: Color(0XFF394C66),
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 24,
+                      height: 1.67,
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Container(
-                    width: 300,
-                    height: 48,
-                    margin: const EdgeInsets.fromLTRB(5.0, 8.0, 0.0, 8.0),
-                    child: const Text(
-                      'Welcome back, please log in to your account.',
-                      style: TextStyle(
-                        color: Color(0XFF9AA1B4),
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                      ),
+              ),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Container(
+                  width: 300,
+                  height: 48,
+                  margin: const EdgeInsets.fromLTRB(5.0, 8.0, 0.0, 8.0),
+                  child: const Text(
+                    'Welcome back, please log in to your account.',
+                    style: TextStyle(
+                      color: Color(0XFF9AA1B4),
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.bottomLeft,
+              ),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Container(
+                  width: 124,
+                  height: 20,
+                  color: Colors.white,
+                  margin: const EdgeInsets.fromLTRB(5.0, 20.0, 0.0, 4.0),
+                  child: const Text(
+                    'Email or Username',
+                    style: TextStyle(
+                      color: Color(0XFF394C66),
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14.0,
+                      height: 1.43,
+                    ),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Container(
+                  width: 300,
+                  height: 44,
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 4.0,
+                    vertical: 4.0,
+                  ),
+                  padding: const EdgeInsets.fromLTRB(3.0, 4.0, 3.0, 4.0),
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: const Color(0XFFEB6363),
+                        width: 1.0,
+                        style: BorderStyle.solid,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0)),
                   child: Container(
-                    width: 124,
+                    width: 137,
                     height: 20,
-                    color: Colors.white,
-                    margin: const EdgeInsets.fromLTRB(5.0, 20.0, 0.0, 4.0),
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 6.0,
+                      horizontal: 8.0,
+                    ),
                     child: const Text(
-                      'Email or Username',
+                      'jhondoe@gmail.com',
                       style: TextStyle(
-                        color: Color(0XFF394C66),
+                        color: Color(0xff394c66),
                         fontStyle: FontStyle.normal,
                         fontWeight: FontWeight.w600,
                         fontSize: 14.0,
@@ -82,85 +135,48 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Container(
-                    width: 300,
-                    height: 44,
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 4.0, 
-                        vertical: 4.0,
-                        ),
-                    padding: const EdgeInsets.fromLTRB(3.0, 4.0, 3.0, 4.0),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: const Color(0XFFEB6363),
-                        width: 1.0,
-                        style: BorderStyle.solid,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0)
-                    ),
-                    child: Container(
-                      width: 137,
-                      height: 20,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 6.0, 
-                          horizontal: 8.0,
-                          ),
-                      child: const Text(
-                        'jhondoe@gmail.com',
-                        style: TextStyle(
-                          color: Color(0xff394c66),
-                          fontStyle: FontStyle.normal,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14.0,
-                          height: 1.43,
+              ),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Container(
+                  margin: const EdgeInsets.all(0.0),
+                  child: Row(
+                    children: const <Widget>[
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(5.0, 8.0, 0.0, 0.0),
+                        child: Image(
+                          image: AssetImage('images/icons1.png'),
+                          color: Color(0XFFEB6363),
+                          width: 16,
+                          height: 16,
                         ),
                       ),
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Container(
-                    margin: const EdgeInsets.all(0.0),
-                    child: Row(
-                      children: const <Widget>[
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(5.0, 8.0, 0.0, 0.0),
-                          child: Image(
-                            image: AssetImage('images/icons1.png'),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
+                        child: Text(
+                          'Please enter a valid email',
+                          style: TextStyle(
                             color: Color(0XFFEB6363),
-                            width: 16,
-                            height: 16,
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12.0,
+                            height: 1.33,
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
-                          child: Text(
-                            'Please enter a valid email',
-                            style: TextStyle( 
-                              color: Color(0XFFEB6363),
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 12.0,
-                              height: 1.33,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Container(
-                    margin: const EdgeInsets.all(0.0),
-                    child: Row(
-                      children: const <Widget>[
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(5.0, 28.0, 120.0, 2.0),
-                          child: Text(
+              ),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Container(
+                  margin: const EdgeInsets.all(0.0),
+                  child: Row(
+                    children: const <Widget>[
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(5.0, 28.0, 120.0, 2.0),
+                        child: Text(
                           "Password",
                           style: TextStyle(
                             color: Color(0XFF394C66),
@@ -170,49 +186,49 @@ class MyApp extends StatelessWidget {
                             height: 1.43,
                           ),
                         ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0.0, 28.0, 0.0, 2.0),
-                          child: Text(
-                            'Forgot Password?',
-                            style: TextStyle(
-                              color: Color(0XFF3663F2),
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14.0,
-                              height: 1.43,
-                            ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0.0, 28.0, 0.0, 2.0),
+                        child: Text(
+                          'Forgot Password?',
+                          style: TextStyle(
+                            color: Color(0XFF3663F2),
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14.0,
+                            height: 1.43,
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-                Align(
-                  alignment: Alignment.bottomLeft,
+              ),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Container(
+                  width: 300,
+                  height: 44,
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 4.0,
+                    vertical: 4.0,
+                  ),
+                  padding: const EdgeInsets.fromLTRB(3.0, 4.0, 3.0, 4.0),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: const Color(0XFFEB6363),
+                      width: 1.0,
+                      style: BorderStyle.solid,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
                   child: Container(
-                    width: 300,
-                    height: 44,
+                    width: 137,
+                    height: 20,
                     margin: const EdgeInsets.symmetric(
-                      horizontal: 4.0, 
-                      vertical: 4.0,
+                      vertical: 6.0,
+                      horizontal: 8.0,
                     ),
-                    padding: const EdgeInsets.fromLTRB(3.0, 4.0, 3.0, 4.0),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: const Color(0XFFEB6363),
-                        width: 1.0,
-                        style: BorderStyle.solid,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    child: Container(
-                      width: 137,
-                      height: 20,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 6.0, 
-                          horizontal: 8.0,
-                      ),
                     child: Row(
                       children: const <Widget>[
                         Padding(
@@ -222,83 +238,78 @@ class MyApp extends StatelessWidget {
                             color: Color(0XFF394C66),
                             width: 6,
                             height: 6,
-                          ), 
+                          ),
                         ),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(0.0, 0.0, 3.0, 0.0),
-                          child: Image(
-                            image: AssetImage('images/icons2.png'),
-                            color: Color(0XFF394C66),
-                            width: 6,
-                            height: 6,
-                          )
-                        ),
+                            padding: EdgeInsets.fromLTRB(0.0, 0.0, 3.0, 0.0),
+                            child: Image(
+                              image: AssetImage('images/icons2.png'),
+                              color: Color(0XFF394C66),
+                              width: 6,
+                              height: 6,
+                            )),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(0.0, 0.0, 3.0, 0.0),
-                          child: Image(
-                            image: AssetImage('images/icons2.png'),
-                            color: Color(0XFF394C66),
-                            width: 6,
-                            height: 6,
-                          )
-                        ),
+                            padding: EdgeInsets.fromLTRB(0.0, 0.0, 3.0, 0.0),
+                            child: Image(
+                              image: AssetImage('images/icons2.png'),
+                              color: Color(0XFF394C66),
+                              width: 6,
+                              height: 6,
+                            )),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(0.0, 0.0, 3.0, 0.0),
-                          child: Image(
-                            image: AssetImage('images/icons2.png'),
-                            color: Color(0XFF394C66),
-                            width: 6,
-                            height: 6,
-                          )
-                        ),
+                            padding: EdgeInsets.fromLTRB(0.0, 0.0, 3.0, 0.0),
+                            child: Image(
+                              image: AssetImage('images/icons2.png'),
+                              color: Color(0XFF394C66),
+                              width: 6,
+                              height: 6,
+                            )),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(210.0, 0.0, 0.0, 0.0),
-                          child: Image(
-                            image: AssetImage('images/icons3.png'),
-                            color: Color(0XFF9AA1B4),
-                            width: 20,
-                            height: 24,
-                          )
-                        ),
-                        
+                            padding: EdgeInsets.fromLTRB(210.0, 0.0, 0.0, 0.0),
+                            child: Image(
+                              image: AssetImage('images/icons3.png'),
+                              color: Color(0XFF9AA1B4),
+                              width: 20,
+                              height: 24,
+                            )),
                       ],
                     ),
                   ),
                 ),
-                ),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Container(
-                    margin: const EdgeInsets.all(0.0),
-                    child: Row(
-                      children: const <Widget>[
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(5.0, 8.0, 0.0, 0.0),
-                          child: Image(
-                            image: AssetImage('images/icons1.png'),
+              ),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Container(
+                  margin: const EdgeInsets.all(0.0),
+                  child: Row(
+                    children: const <Widget>[
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(5.0, 8.0, 0.0, 0.0),
+                        child: Image(
+                          image: AssetImage('images/icons1.png'),
+                          color: Color(0XFFEB6363),
+                          width: 16,
+                          height: 16,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
+                        child: Text(
+                          'Please enter a valid password',
+                          style: TextStyle(
                             color: Color(0XFFEB6363),
-                            width: 16,
-                            height: 16,
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12.0,
+                            height: 1.33,
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
-                          child: Text(
-                            'Please enter a valid password',
-                            style: TextStyle( 
-                              color: Color(0XFFEB6363),
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 12.0,
-                              height: 1.33,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-                Align(
+              ),
+              Align(
                   alignment: Alignment.bottomLeft,
                   child: Container(
                     margin: const EdgeInsets.fromLTRB(5.0, 10.0, 0.0, 16.0),
@@ -313,71 +324,69 @@ class MyApp extends StatelessWidget {
                           height: 1.5,
                         ),
                       ),
-                    )
+                    ),
+                  )),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Container(
+                  width: 300,
+                  height: 44,
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 4.0,
+                    vertical: 4.0,
                   ),
-                ),
-                Align(
-                  alignment: Alignment.bottomLeft,
+                  padding: const EdgeInsets.fromLTRB(5.0, 4.0, 5.0, 4.0),
+                  decoration: BoxDecoration(
+                      color: const Color(0XFF2356F6),
+                      borderRadius: BorderRadius.circular(8.0)),
                   child: Container(
-                    width: 300,
-                    height: 44,
+                    width: 45,
+                    height: 20,
                     margin: const EdgeInsets.symmetric(
-                      horizontal: 4.0, 
-                      vertical: 4.0,
+                      vertical: 6.0,
+                      horizontal: 8.0,
                     ),
-                    padding: const EdgeInsets.fromLTRB(5.0, 4.0, 5.0, 4.0),
-                    decoration: BoxDecoration(
-                        color: const Color(0XFF2356F6),
-                        borderRadius: BorderRadius.circular(8.0)
-                    ),
-                    child: Container(
-                      width: 45,
-                      height: 20,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 6.0, 
-                          horizontal: 8.0,
-                          ),
-                      child: const Text(
-                        'Sign In',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0XFFFFFFFF),
-                          fontStyle: FontStyle.normal,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14.0,
-                          height: 1.43, 
-                        ),
+                    child: const Text(
+                      'Sign In',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0XFFFFFFFF),
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14.0,
+                        height: 1.43,
                       ),
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Container(
-                    width: 300,
-                    height: 0,
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: 4.0, 
-                      vertical: 24.0,
+              ),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Container(
+                  width: 300,
+                  height: 0,
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 4.0,
+                    vertical: 24.0,
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: const Color(0XFFE5EBF5),
+                      width: 1.0,
+                      style: BorderStyle.solid,
                     ),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: const Color(0XFFE5EBF5),
-                        width: 1.0,
-                        style: BorderStyle.solid,
-                      ),
-                    ), 
                   ),
                 ),
-                 Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Container(
-                    margin: const EdgeInsets.all(0.0),
-                    child: Row(
-                      children: const <Widget>[
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(13.0, 0.0, 3.0, 0.0),
-                          child: Text(
+              ),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Container(
+                  margin: const EdgeInsets.all(0.0),
+                  child: Row(
+                    children: const <Widget>[
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(13.0, 0.0, 3.0, 0.0),
+                        child: Text(
                           "Don't have an account?",
                           style: TextStyle(
                             color: Color(0XFF394C66),
@@ -387,23 +396,22 @@ class MyApp extends StatelessWidget {
                             height: 1.5,
                           ),
                         ),
+                      ),
+                      Text(
+                        'Create account',
+                        style: TextStyle(
+                          color: Color(0XFF2356F6),
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16.0,
+                          height: 1.5,
                         ),
-                        Text(
-                          'Create account',
-                          style: TextStyle(
-                            color: Color(0XFF2356F6),
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16.0,
-                            height: 1.5,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
