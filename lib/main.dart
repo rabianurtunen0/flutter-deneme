@@ -28,6 +28,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String? email;
+  String? password;
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  bool _isVisible = true;
+  void updateStatus() {
+    setState(() {
+      _isVisible = !_isVisible;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 alignment: Alignment.bottomLeft,
                 child: Container(
                   width: 300,
-                  height: 48,
+                  height: 44,
                   margin: const EdgeInsets.fromLTRB(5.0, 8.0, 0.0, 8.0),
                   child: const Text(
                     'Welcome back, please log in to your account.',
@@ -104,33 +116,26 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Container(
                   width: 300,
                   height: 44,
-                  margin: const EdgeInsets.symmetric(
-                    horizontal: 4.0,
-                    vertical: 4.0,
-                  ),
-                  padding: const EdgeInsets.fromLTRB(3.0, 4.0, 3.0, 4.0),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: const Color(0XFFEB6363),
-                        width: 1.0,
-                        style: BorderStyle.solid,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0)),
-                  child: Container(
-                    width: 137,
-                    height: 20,
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 6.0,
-                      horizontal: 8.0,
+                  margin: const EdgeInsets.all(4.0),
+                  child: TextField(
+                    controller: _emailController,
+                    textAlignVertical: TextAlignVertical.bottom,
+                    style: const TextStyle(
+                      color: Color(0xff394c66),
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w600,
+                      fontStyle: FontStyle.normal,
                     ),
-                    child: const Text(
-                      'jhondoe@gmail.com',
-                      style: TextStyle(
+                    decoration: const InputDecoration(
+                      hintText: 'name@example.com',
+                      hintStyle: TextStyle(
                         color: Color(0xff394c66),
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.w600,
                         fontSize: 14.0,
-                        height: 1.43,
+                        fontWeight: FontWeight.w600,
+                        fontStyle: FontStyle.normal,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
                       ),
                     ),
                   ),
@@ -143,39 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Row(
                     children: const <Widget>[
                       Padding(
-                        padding: EdgeInsets.fromLTRB(5.0, 8.0, 0.0, 0.0),
-                        child: Image(
-                          image: AssetImage('images/icons1.png'),
-                          color: Color(0XFFEB6363),
-                          width: 16,
-                          height: 16,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
-                        child: Text(
-                          'Please enter a valid email',
-                          style: TextStyle(
-                            color: Color(0XFFEB6363),
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12.0,
-                            height: 1.33,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: Container(
-                  margin: const EdgeInsets.all(0.0),
-                  child: Row(
-                    children: const <Widget>[
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(5.0, 28.0, 120.0, 2.0),
+                        padding: EdgeInsets.fromLTRB(5.0, 28.0, 130.0, 2.0),
                         child: Text(
                           "Password",
                           style: TextStyle(
@@ -209,70 +182,35 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Container(
                   width: 300,
                   height: 44,
-                  margin: const EdgeInsets.symmetric(
-                    horizontal: 4.0,
-                    vertical: 4.0,
-                  ),
-                  padding: const EdgeInsets.fromLTRB(3.0, 4.0, 3.0, 4.0),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color(0XFFEB6363),
-                      width: 1.0,
-                      style: BorderStyle.solid,
+                  margin: const EdgeInsets.all(4.0),
+                  child: TextField(
+                    controller: _passwordController,
+                    obscureText: _isVisible ? false : true,
+                    textAlignVertical: TextAlignVertical.bottom,
+                    style: const TextStyle(
+                      color: Color(0xff394c66),
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w600,
+                      fontStyle: FontStyle.normal,
                     ),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: Container(
-                    width: 137,
-                    height: 20,
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 6.0,
-                      horizontal: 8.0,
-                    ),
-                    child: Row(
-                      children: const <Widget>[
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0.0, 0.0, 3.0, 0.0),
-                          child: Image(
-                            image: AssetImage('images/icons2.png'),
-                            color: Color(0XFF394C66),
-                            width: 6,
-                            height: 6,
-                          ),
-                        ),
-                        Padding(
-                            padding: EdgeInsets.fromLTRB(0.0, 0.0, 3.0, 0.0),
-                            child: Image(
-                              image: AssetImage('images/icons2.png'),
-                              color: Color(0XFF394C66),
-                              width: 6,
-                              height: 6,
-                            )),
-                        Padding(
-                            padding: EdgeInsets.fromLTRB(0.0, 0.0, 3.0, 0.0),
-                            child: Image(
-                              image: AssetImage('images/icons2.png'),
-                              color: Color(0XFF394C66),
-                              width: 6,
-                              height: 6,
-                            )),
-                        Padding(
-                            padding: EdgeInsets.fromLTRB(0.0, 0.0, 3.0, 0.0),
-                            child: Image(
-                              image: AssetImage('images/icons2.png'),
-                              color: Color(0XFF394C66),
-                              width: 6,
-                              height: 6,
-                            )),
-                        Padding(
-                            padding: EdgeInsets.fromLTRB(210.0, 0.0, 0.0, 0.0),
-                            child: Image(
-                              image: AssetImage('images/icons3.png'),
-                              color: Color(0XFF9AA1B4),
-                              width: 20,
-                              height: 24,
-                            )),
-                      ],
+                    onTap: updateStatus,
+                    decoration: InputDecoration(
+                      hintText: 'password',
+                      hintStyle: const TextStyle(
+                        color: Color(0xff394c66),
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w600,
+                        fontStyle: FontStyle.normal,
+                      ),
+                      suffixIcon: Icon(
+                        _isVisible
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
+                        color: const Color(0XFF9AA1B4),
+                      ),
+                      border: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      ),
                     ),
                   ),
                 ),
@@ -280,52 +218,21 @@ class _MyHomePageState extends State<MyHomePage> {
               Align(
                 alignment: Alignment.bottomLeft,
                 child: Container(
-                  margin: const EdgeInsets.all(0.0),
-                  child: Row(
-                    children: const <Widget>[
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(5.0, 8.0, 0.0, 0.0),
-                        child: Image(
-                          image: AssetImage('images/icons1.png'),
-                          color: Color(0XFFEB6363),
-                          width: 16,
-                          height: 16,
-                        ),
+                  margin: const EdgeInsets.fromLTRB(5.0, 10.0, 0.0, 16.0),
+                  child: const ListTile(
+                    title: Text(
+                      'Keep me logged in',
+                      style: TextStyle(
+                        color: Color(0XFF394C66),
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16.0,
+                        height: 1.5,
                       ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
-                        child: Text(
-                          'Please enter a valid password',
-                          style: TextStyle(
-                            color: Color(0XFFEB6363),
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12.0,
-                            height: 1.33,
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
-              Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Container(
-                    margin: const EdgeInsets.fromLTRB(5.0, 10.0, 0.0, 16.0),
-                    child: const ListTile(
-                      title: Text(
-                        'Keep me logged in',
-                        style: TextStyle(
-                          color: Color(0XFF394C66),
-                          fontStyle: FontStyle.normal,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.0,
-                          height: 1.5,
-                        ),
-                      ),
-                    ),
-                  )),
               Align(
                 alignment: Alignment.bottomLeft,
                 child: Container(
@@ -383,9 +290,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Container(
                   margin: const EdgeInsets.all(0.0),
                   child: Row(
-                    children: const <Widget>[
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(13.0, 0.0, 3.0, 0.0),
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(13.0, 0.0, 0.0, 0.0),
                         child: Text(
                           "Don't have an account?",
                           style: TextStyle(
@@ -397,15 +304,24 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ),
                       ),
-                      Text(
-                        'Create account',
-                        style: TextStyle(
-                          color: Color(0XFF2356F6),
-                          fontStyle: FontStyle.normal,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.0,
-                          height: 1.5,
+                      TextButton(
+                        child: const Text(
+                          'Create account',
+                          style: TextStyle(
+                            color: Color(0XFF2356F6),
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16.0,
+                            height: 1.5,
+                          ),
                         ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const StartSeite()),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -417,122 +333,395 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-}
 
-
-/*import 'package:flutter/material.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+  Align get errorMessage {
+    return Align(
+      alignment: Alignment.bottomLeft,
+      child: Container(
+        margin: const EdgeInsets.all(0.0),
+        child: Row(
+          children: const <Widget>[
+            Padding(
+              padding: EdgeInsets.fromLTRB(5.0, 8.0, 0.0, 0.0),
+              child: Image(
+                image: AssetImage('images/icons1.png'),
+                color: Color(0XFFEB6363),
+                width: 16,
+                height: 16,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
+              child: Text(
+                'Please enter a valid email/password',
+                style: TextStyle(
+                  color: Color(0XFFEB6363),
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 12.0,
+                  height: 1.33,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+class StartSeite extends StatefulWidget {
+  const StartSeite({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<StartSeite> createState() => _StartSeiteState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _StartSeiteState extends State<StartSeite> {
+  final _fromKey = GlobalKey<FormState>();
 
-  void _incrementCounter() {
+  final nameEditingController = TextEditingController();
+  final surnameEditingController = TextEditingController();
+  final usernameEditingController = TextEditingController();
+  final emailEditingController = TextEditingController();
+  final passwordEditingController = TextEditingController();
+  final confirmPasswordEditingController = TextEditingController();
+
+  bool _isVisible = true;
+  void _updateStatus() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      _isVisible = !_isVisible;
+    });
+  }
+
+  bool isVisible = true;
+  void updateStatus() {
+    setState(() {
+      isVisible = !isVisible;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+    final nameField = TextFormField(
+      autofocus: false,
+      controller: nameEditingController,
+      keyboardType: TextInputType.text,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This field is required";
+        }
+        return null;
+      },
+      onSaved: (newValue) {
+        nameEditingController.text = newValue!;
+      },
+      textInputAction: TextInputAction.next,
+      textAlignVertical: TextAlignVertical.center,
+      style: const TextStyle(
+        color: Color(0xff394c66),
+        fontSize: 14.0,
+        fontWeight: FontWeight.w600,
+        fontStyle: FontStyle.normal,
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+      decoration: const InputDecoration(
+        labelText: 'Name',
+        contentPadding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(16.0)),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+
+    final surnameField = TextFormField(
+      autofocus: false,
+      controller: surnameEditingController,
+      keyboardType: TextInputType.text,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This field is required";
+        }
+        return null;
+      },
+      onSaved: (newValue) {
+        surnameEditingController.text = newValue!;
+      },
+      textInputAction: TextInputAction.next,
+      textAlignVertical: TextAlignVertical.center,
+      style: const TextStyle(
+        color: Color(0xff394c66),
+        fontSize: 14.0,
+        fontWeight: FontWeight.w600,
+        fontStyle: FontStyle.normal,
+      ),
+      decoration: const InputDecoration(
+        contentPadding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+        labelText: 'Surname',
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(16.0)),
+        ),
+      ),
+    );
+
+    final usernameField = TextFormField(
+      autofocus: false,
+      controller: usernameEditingController,
+      keyboardType: TextInputType.text,
+      validator: (value) {
+        if (value == null || value.trim().isEmpty) {
+          return "This field is required";
+        }
+        if (value.trim().length < 6) {
+          return 'Username must be at least 6 characters in length';
+        }
+        return null;
+      },
+      onSaved: (newValue) {
+        usernameEditingController.text = newValue!;
+      },
+      textInputAction: TextInputAction.next,
+      textAlignVertical: TextAlignVertical.center,
+      style: const TextStyle(
+        color: Color(0xff394c66),
+        fontSize: 14.0,
+        fontWeight: FontWeight.w600,
+        fontStyle: FontStyle.normal,
+      ),
+      decoration: const InputDecoration(
+        hintText: 'username',
+        hintStyle: TextStyle(
+          color: Color(0xff394c66),
+          fontSize: 14.0,
+          fontWeight: FontWeight.w600,
+          fontStyle: FontStyle.normal,
+        ),
+        contentPadding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+        labelText: 'Username',
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(16.0)),
+        ),
+      ),
+    );
+
+    final emailField = TextFormField(
+      autofocus: false,
+      controller: emailEditingController,
+      keyboardType: TextInputType.emailAddress,
+      validator: (value) {
+        if (value == null || value.trim().isEmpty) {
+          return "This field is required";
+        }
+        if (!RegExp(
+                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+            .hasMatch(value)) {
+          return "Please enter a valid email adress";
+        }
+        return null;
+      },
+      onSaved: (newValue) {
+        emailEditingController.text = newValue!;
+      },
+      textInputAction: TextInputAction.next,
+      textAlignVertical: TextAlignVertical.center,
+      style: const TextStyle(
+        color: Color(0xff394c66),
+        fontSize: 14.0,
+        fontWeight: FontWeight.w600,
+        fontStyle: FontStyle.normal,
+      ),
+      decoration: const InputDecoration(
+        hintText: 'email',
+        hintStyle: TextStyle(
+          color: Color(0xff394c66),
+          fontSize: 14.0,
+          fontWeight: FontWeight.w600,
+          fontStyle: FontStyle.normal,
+        ),
+        contentPadding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+        labelText: 'Email',
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(16.0)),
+        ),
+      ),
+    );
+
+    final passwordField = TextFormField(
+      autofocus: false,
+      controller: passwordEditingController,
+      obscureText: _isVisible ? false : true,
+      validator: (value) {
+        if (value == null || value.trim().isEmpty) {
+          return "This field is required";
+        }
+        if (value.trim().length < 8) {
+          return 'Password must be at least 8 characters in length';
+        }
+        return null;
+      },
+      onSaved: (newValue) {
+        passwordEditingController.text = newValue!;
+      },
+      textInputAction: TextInputAction.next,
+      textAlignVertical: TextAlignVertical.center,
+      style: const TextStyle(
+        color: Color(0xff394c66),
+        fontSize: 14.0,
+        fontWeight: FontWeight.w600,
+        fontStyle: FontStyle.normal,
+      ),
+      onTap: _updateStatus,
+      decoration: InputDecoration(
+        hintText: 'password',
+        hintStyle: const TextStyle(
+          color: Color(0xff394c66),
+          fontSize: 14.0,
+          fontWeight: FontWeight.w600,
+          fontStyle: FontStyle.normal,
+        ),
+        suffixIcon: Icon(
+          _isVisible
+              ? Icons.visibility_outlined
+              : Icons.visibility_off_outlined,
+          color: const Color(0XFF9AA1B4),
+        ),
+        contentPadding: const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+        labelText: 'Password',
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(16.0)),
+        ),
+      ),
+    );
+
+    final confirmPasswordField = TextFormField(
+      autofocus: false,
+      controller: confirmPasswordEditingController,
+      obscureText: true,
+      validator: (value) {
+        if (value == null || value.trim().isEmpty) {
+          return "This field is required";
+        }
+        if (value.trim().length < 8) {
+          return 'Password must be at least 8 characters in length';
+        }
+        if (value != passwordEditingController.text) {
+          return "No match";
+        }
+
+        return null;
+      },
+      onSaved: (newValue) {
+        confirmPasswordEditingController.text = newValue!;
+      },
+      textInputAction: TextInputAction.done,
+      textAlignVertical: TextAlignVertical.center,
+      style: const TextStyle(
+        color: Color(0xff394c66),
+        fontSize: 14.0,
+        fontWeight: FontWeight.w600,
+        fontStyle: FontStyle.normal,
+      ),
+      onTap: updateStatus,
+      decoration: InputDecoration(
+        hintText: 'confirm password',
+        hintStyle: const TextStyle(
+          color: Color(0xff394c66),
+          fontSize: 14.0,
+          fontWeight: FontWeight.w600,
+          fontStyle: FontStyle.normal,
+        ),
+        suffixIcon: Icon(
+          _isVisible
+              ? Icons.visibility_outlined
+              : Icons.visibility_off_outlined,
+          color: const Color(0XFF9AA1B4),
+        ),
+        contentPadding: const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+        labelText: 'Confirm Password',
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(16.0)),
+        ),
+      ),
+    );
+
+    final signUpButton = Material(
+      elevation: 5,
+      borderRadius: BorderRadius.circular(16.0),
+      color: const Color(0XFF2356F6),
+      child: MaterialButton(
+        padding: const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+        minWidth: MediaQuery.of(context).size.width,
+        child: const Text(
+          'Sign Up',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Color(0XFFFFFFFF),
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.w600,
+            fontSize: 14.0,
+            height: 1.43,
+          ),
+        ),
+        onPressed: () {
+          if (_fromKey.currentState!.validate()) {
+            return;
+          }
+        },
+      ),
+    );
+
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Color(0XFF2356F6),
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
+      body: Container(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(36.0, 0.0, 36.0, 108.0),
+          child: Form(
+            key: _fromKey,
+            child: Column(
+              //(Wrap) direction: Axis.vertical, spacing, runSpacing, alignment,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: SizedBox(
+                    child: Container(
+                      margin: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
+                      child: Image.asset('images/yartu1.jpg'),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                nameField,
+                const SizedBox(height: 10),
+                surnameField,
+                const SizedBox(height: 10),
+                usernameField,
+                const SizedBox(height: 10),
+                emailField,
+                const SizedBox(height: 10),
+                passwordField,
+                const SizedBox(height: 10),
+                confirmPasswordField,
+                const SizedBox(height: 10),
+                signUpButton,
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
-*/
