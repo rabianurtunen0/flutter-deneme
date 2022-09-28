@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:yartu_application/model/user_model.dart';
-import 'package:yartu_application/login.dart';
+import 'package:yartu_application/dashboard.dart';
+import 'package:yartu_application/details.dart';
+import 'package:yartu_application/folders.dart';
+import 'package:yartu_application/messages.dart';
+import 'package:yartu_application/settings.dart';
 
 class StartSeite extends StatefulWidget {
   const StartSeite({Key? key}) : super(key: key);
@@ -13,20 +13,20 @@ class StartSeite extends StatefulWidget {
 }
 
 class _StartSeiteState extends State<StartSeite> {
-  final _auth = FirebaseAuth.instance;
-  final _fromKey = GlobalKey<FormState>();
+  final GlobalKey<ScaffoldState> _drawerScaffoldKey = GlobalKey();
+  int _selectedIndex = 0;
 
-  final nameEditingController = TextEditingController();
-  final surnameEditingController = TextEditingController();
-  final usernameEditingController = TextEditingController();
-  final emailEditingController = TextEditingController();
-  final passwordEditingController = TextEditingController();
-  final confirmPasswordEditingController = TextEditingController();
+  static const List<Widget> _widgetOptions = <Widget>[
+    DashBoard(),
+    Messages(),
+    Details(),
+    Folders(),
+    Settings(),
+  ];
 
-  bool _passwordVisible = true;
-  void updateStatus() {
+  void _onItemTappend(int index) {
     setState(() {
-      _passwordVisible = true;
+      _selectedIndex = index;
     });
   }
 
@@ -34,362 +34,312 @@ class _StartSeiteState extends State<StartSeite> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Color(0XFF2356F6),
-          ),
           onPressed: () {
-            Navigator.of(context).pop();
+            if (_drawerScaffoldKey.currentState?.isDrawerOpen == false) {
+              _drawerScaffoldKey.currentState?.openDrawer();
+            } else {
+              _drawerScaffoldKey.currentState?.openEndDrawer();
+            }
           },
+          icon: const Icon(
+            Icons.menu,
+            color: Color(0XFF9AA1B4),
+          ),
         ),
-      ),
-      body: Container(
-        color: Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(36.0, 24.0, 36.0, 0.0),
-          child: Form(
-            key: _fromKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                SizedBox(
-                  child: Container(
-                    margin: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 20.0),
-                    child: Image.asset('images/yartu1.jpg'),
-                  ),
+        title: SizedBox(
+          width: 375,
+          height: 50,
+          child: Container(
+            margin: const EdgeInsets.fromLTRB(0.0, 8.0, 20.0, 8.0),
+            child: TextFormField(
+              decoration: const InputDecoration(
+                hintText: 'Search...',
+                hintStyle: TextStyle(
+                  fontSize: 16.0,
                 ),
-                SizedBox(
-                  child: Container(
-                    margin: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
-                    child: TextFormField(
-                      autofocus: false,
-                      controller: nameEditingController,
-                      keyboardType: TextInputType.text,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "⛔ This field is required";
-                        }
-                        return null;
-                      },
-                      onSaved: (newValue) {
-                        nameEditingController.text = newValue!;
-                      },
-                      textInputAction: TextInputAction.next,
-                      textAlignVertical: TextAlignVertical.center,
-                      style: const TextStyle(
-                        color: Color(0xff394c66),
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w600,
-                        fontStyle: FontStyle.normal,
-                      ),
-                      decoration: const InputDecoration(
-                        labelText: 'Name',
-                        contentPadding:
-                            EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        ),
-                      ),
-                    ),
-                  ),
+                prefixIcon: Icon(
+                  Icons.search,
+                  size: 16,
                 ),
-                SizedBox(
-                  child: Container(
-                    margin: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
-                    child: TextFormField(
-                      autofocus: false,
-                      controller: surnameEditingController,
-                      keyboardType: TextInputType.text,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "⛔ This field is required";
-                        }
-                        return null;
-                      },
-                      onSaved: (newValue) {
-                        surnameEditingController.text = newValue!;
-                      },
-                      textInputAction: TextInputAction.next,
-                      textAlignVertical: TextAlignVertical.center,
-                      style: const TextStyle(
-                        color: Color(0xff394c66),
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w600,
-                        fontStyle: FontStyle.normal,
-                      ),
-                      decoration: const InputDecoration(
-                        contentPadding:
-                            EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-                        labelText: 'Surname',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        ),
-                      ),
-                    ),
-                  ),
+                contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(40.0)),
                 ),
-                SizedBox(
-                  child: Container(
-                    margin: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
-                    child: TextFormField(
-                      autofocus: false,
-                      controller: usernameEditingController,
-                      keyboardType: TextInputType.text,
-                      validator: (value) {
-                        RegExp regex = RegExp(r'^.{6,}$');
-                        if (value!.isEmpty) {
-                          return "⛔ This field is required";
-                        }
-                        if (!regex.hasMatch(value)) {
-                          return "⛔ Enter valid username(Minimum 6 characters)";
-                        }
-                        return null;
-                      },
-                      onSaved: (newValue) {
-                        usernameEditingController.text = newValue!;
-                      },
-                      textInputAction: TextInputAction.next,
-                      textAlignVertical: TextAlignVertical.center,
-                      style: const TextStyle(
-                        color: Color(0xff394c66),
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w600,
-                        fontStyle: FontStyle.normal,
-                      ),
-                      decoration: const InputDecoration(
-                        contentPadding:
-                            EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-                        labelText: 'Username',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  child: Container(
-                    margin: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
-                    child: TextFormField(
-                      autofocus: false,
-                      controller: emailEditingController,
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "⛔ This field is required";
-                        }
-                        if (!RegExp(
-                                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                            .hasMatch(value)) {
-                          return "⛔ Please enter a valid email adress";
-                        }
-                        return null;
-                      },
-                      onSaved: (newValue) {
-                        emailEditingController.text = newValue!;
-                      },
-                      textInputAction: TextInputAction.next,
-                      textAlignVertical: TextAlignVertical.center,
-                      style: const TextStyle(
-                        color: Color(0xff394c66),
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w600,
-                        fontStyle: FontStyle.normal,
-                      ),
-                      decoration: const InputDecoration(
-                        contentPadding:
-                            EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-                        labelText: 'Email',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  child: Container(
-                    margin: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
-                    child: TextFormField(
-                      autofocus: false,
-                      controller: passwordEditingController,
-                      obscureText: _passwordVisible,
-                      validator: (value) {
-                        RegExp regex = RegExp(r'^.{8,}$');
-                        if (value!.isEmpty) {
-                          return "⛔ This field is required";
-                        }
-                        if (!regex.hasMatch(value)) {
-                          return "⛔ Enter valid password(Minimum 8 characters)";
-                        }
-                        return null;
-                      },
-                      onSaved: (newValue) {
-                        passwordEditingController.text = newValue!;
-                      },
-                      textInputAction: TextInputAction.next,
-                      textAlignVertical: TextAlignVertical.center,
-                      style: const TextStyle(
-                        color: Color(0xff394c66),
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w600,
-                        fontStyle: FontStyle.normal,
-                      ),
-                      onTap: updateStatus,
-                      decoration: InputDecoration(
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            _passwordVisible
-                                ? Icons.visibility_off_outlined
-                                : Icons.visibility_outlined,
-                            color: const Color(0XFF9AA1B4),
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _passwordVisible = !_passwordVisible;
-                            });
-                          },
-                        ),
-                        contentPadding:
-                            const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-                        labelText: 'Password',
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  child: Container(
-                    margin: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
-                    child: TextFormField(
-                      autofocus: false,
-                      controller: confirmPasswordEditingController,
-                      obscureText: _passwordVisible,
-                      validator: (value) {
-                        if (confirmPasswordEditingController.text.length > 8 &&
-                            value != passwordEditingController.text) {
-                          return "⛔ Password don't match";
-                        }
-                        return null;
-                      },
-                      onSaved: (newValue) {
-                        confirmPasswordEditingController.text = newValue!;
-                      },
-                      textInputAction: TextInputAction.done,
-                      textAlignVertical: TextAlignVertical.center,
-                      style: const TextStyle(
-                        color: Color(0xff394c66),
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w600,
-                        fontStyle: FontStyle.normal,
-                      ),
-                      onTap: updateStatus,
-                      decoration: InputDecoration(
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            _passwordVisible
-                                ? Icons.visibility_off_outlined
-                                : Icons.visibility_outlined,
-                            color: const Color(0XFF9AA1B4),
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _passwordVisible = !_passwordVisible;
-                            });
-                          },
-                        ),
-                        contentPadding:
-                            const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-                        labelText: 'Confirm Password',
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  child: Material(
-                    elevation: 5,
-                    borderRadius: BorderRadius.circular(8.0),
-                    color: const Color(0XFF2356F6),
-                    child: MaterialButton(
-                      padding:
-                          const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-                      minWidth: MediaQuery.of(context).size.width,
-                      onPressed: () {
-                        signUp(emailEditingController.text,
-                            passwordEditingController.text);
-                      },
-                      child: const Text(
-                        'Sign Up',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0XFFFFFFFF),
-                          fontStyle: FontStyle.normal,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14.0,
-                          height: 1.43,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0.0, 10.0, 20.0, 10.0),
+            child: SizedBox(
+              width: 32,
+              height: 32,
+              child: Stack(
+                children: [
+                  const CircleAvatar(
+                    backgroundColor: Color(0XFFF1AE04),
+                    child: Text(
+                      'RT',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(22.0, 0.0, 0.0, 9.0),
+                    child: SizedBox(
+                      width: 30,
+                      height: 10,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10.0)
+                        ),
+                        child: Center(
+                          child: SizedBox(
+                            width: 6,
+                            height: 6,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.green,
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
+      body: Scaffold(
+        drawer: Drawer(
+          key: _drawerScaffoldKey,
+          elevation: 0,
+          width: 215,
+          backgroundColor: Colors.white,
+          child: ListView(
+            children: [
+              ListTile(
+                leading: Image.asset(
+                  'images/dashboard.png',
+                  color: const Color(0XFF394C66),
+                ),
+                title: const Text(
+                  'Dashboard',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Color(0XFF394C66),
+                  ),
+                ),
+                onTap: () {
+                  setState(() {
+                    _selectedIndex = 0;
+                  });
+                },
+              ),
+              ListTile(
+                leading: Image.asset(
+                  'images/messages.png',
+                  color: const Color(0XFF394C66),
+                ),
+                title: const Text(
+                  'Messages',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Color(0XFF394C66),
+                  ),
+                ),
+                onTap: () {
+                  setState(() {
+                    _selectedIndex = 1;
+                  });
+                },
+              ),
+              ListTile(
+                leading: Image.asset(
+                  'images/details.png',
+                  color: const Color(0XFF394C66),
+                ),
+                title: const Text(
+                  'Details',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Color(0XFF394C66),
+                  ),
+                ),
+                onTap: () {
+                  setState(() {
+                    _selectedIndex = 2;
+                  });
+                },
+              ),
+              ListTile(
+                leading: Image.asset(
+                  'images/folders.png',
+                  color: const Color(0XFF394C66),
+                ),
+                title: const Text(
+                  'Folders',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Color(0XFF394C66),
+                  ),
+                ),
+                onTap: () {
+                  setState(() {
+                    _selectedIndex = 3;
+                  });
+                },
+              ),
+              ListTile(
+                leading: Image.asset(
+                  'images/settings.png',
+                  color: const Color(0XFF394C66),
+                ),
+                title: const Text(
+                  'Settings',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Color(0XFF394C66),
+                  ),
+                ),
+                onTap: () {
+                  setState(() {
+                    _selectedIndex = 4;
+                  });
+                },
+              ),
+            ],
+          ),
+        ),
+        body: Center(
+          child: _widgetOptions.elementAt(_selectedIndex),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          elevation: 0,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            backgroundColor: const Color(0XFFEFF4FA),
+            currentIndex: _selectedIndex,
+            type: BottomNavigationBarType.fixed,
+            onTap: _onItemTappend,
+            items: [
+              BottomNavigationBarItem(
+                activeIcon: Ink(
+                  decoration: BoxDecoration(
+                    border: Border.all( color: const Color(0XFF3663F2), width: 2.0),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(6.0),
+                    child: ImageIcon(
+                      AssetImage('images/dashboard.png'),
+                      color: Color(0XFF3663F2),
+                    ),
+                  ),
+                ),
+                icon: const ImageIcon(
+                      AssetImage('images/dashboard.png'),
+                      color: Color(0XFF394C66),
+                    ),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                activeIcon: Ink(
+                  decoration: BoxDecoration(
+                    border: Border.all( color: const Color(0XFF3663F2), width: 2.0),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(6.0),
+                    child: ImageIcon(
+                      AssetImage('images/messages.png'),
+                      color: Color(0XFF3663F2),
+                    ),
+                  ),
+                ),
+                icon: const ImageIcon(
+                      AssetImage('images/messages.png'),
+                      color: Color(0XFF394C66),
+                    ),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                activeIcon: Ink(
+                  decoration: BoxDecoration(
+                    border: Border.all( color: const Color(0XFF3663F2), width: 2.0),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(6.0),
+                    child: ImageIcon(
+                      AssetImage('images/details.png'),
+                      color: Color(0XFF3663F2),
+                    ),
+                  ),
+                ),
+                icon: const ImageIcon(
+                      AssetImage('images/details.png'),
+                      color: Color(0XFF394C66),
+                    ),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                activeIcon: Ink(
+                  decoration: BoxDecoration(
+                    border: Border.all( color: const Color(0XFF3663F2), width: 2.0),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(6.0),
+                    child: ImageIcon(
+                      AssetImage('images/folders.png'),
+                      color: Color(0XFF3663F2),
+                    ),
+                  ),
+                ),
+                icon: const ImageIcon(
+                      AssetImage('images/folders.png'),
+                      color: Color(0XFF394C66),
+                    ),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                activeIcon: Ink(
+                  decoration: BoxDecoration(
+                    border: Border.all( color: const Color(0XFF3663F2), width: 2.0),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(6.0),
+                    child: ImageIcon(
+                      AssetImage('images/settings.png'),
+                      color: Color(0XFF3663F2),
+                    ),
+                  ),
+                ),
+                icon: const ImageIcon(
+                      AssetImage('images/settings.png'),
+                      color: Color(0XFF394C66),
+                    ),
+                label: '',
+              ),
+            ],
+          ),
+        ),
     );
-  }
-
-  void signUp(String email, String password) async {
-    if (_fromKey.currentState!.validate()) {
-      await _auth
-          .createUserWithEmailAndPassword(
-            email: email,
-            password: password,
-          )
-          .then((value) => {postDetailsToFirestore()})
-          .catchError((e) {
-        Fluttertoast.showToast(msg: e!.message);
-      });
-    }
-  }
-
-  postDetailsToFirestore() async {
-    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    User? user = _auth.currentUser;
-
-    UserModel userModel = UserModel();
-    userModel.email = user!.email;
-    userModel.username = usernameEditingController.text;
-    userModel.name = nameEditingController.text;
-    userModel.surname = surnameEditingController.text;
-    userModel.password = passwordEditingController.text;
-
-    await firebaseFirestore
-        .collection("users")
-        .doc(user.email)
-        .set(userModel.toMap());
-    Fluttertoast.showToast(
-      msg: "Account created succesfully :) ",
-      //gravity: ToastGravity.CENTER,
-      backgroundColor: const Color(0XFF2356F6),
-      textColor: Colors.white,
-      fontSize: 14.0,
-    );
-    Navigator.pushAndRemoveUntil(
-        (context),
-        MaterialPageRoute(builder: (conext) => const MyHomePage()),
-        (route) => false);
   }
 }
