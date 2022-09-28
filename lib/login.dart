@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:yartu_application/signup.dart';
 import 'package:yartu_application/startseite.dart';
-import 'package:yartu_application/secondpage.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:yartu_application/passwordreset.dart';
@@ -368,7 +368,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const StartSeite()),
+                                builder: (context) => const SignUp()),
                           );
                         },
                       ),
@@ -396,7 +396,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontSize: 14.0,
                 ),
                 Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const SecondPage()))
+                    MaterialPageRoute(builder: (context) => const StartSeite()))
               })
               .then((username) async => {
                 Fluttertoast.showToast(
@@ -406,7 +406,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontSize: 14.0,
                 ),
                 Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const SecondPage()))
+                    MaterialPageRoute(builder: (context) => const StartSeite()))
               })
           .catchError((e) {
         Fluttertoast.showToast(
@@ -420,66 +420,7 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     }
   }
-/*
-  void signIn(String email, String username, String password) async {
-    try {
-      await _auth
-          .signInWithEmailAndPassword(email: email, password: password)
-          .then((email) async => {
-                Fluttertoast.showToast(
-                  msg: "Login succesfully :) ",
-                  backgroundColor: const Color(0XFF2356F6),
-                  textColor: Colors.white,
-                  fontSize: 14.0,
-                ),
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const SecondPage()))
-              })
-          .then((username) async => {
-                Fluttertoast.showToast(
-                  msg: "Login succesfully :) ",
-                  backgroundColor: const Color(0XFF2356F6),
-                  textColor: Colors.white,
-                  fontSize: 14.0,
-                ),
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const SecondPage()))
-              });
-    } catch (e) {
-      /*Fluttertoast.showToast(
-        msg: e.message ,
-        backgroundColor: const Color(0XFF2356F6),
-        textColor: Colors.white,
-        fontSize: 14.0,
-      );*/
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const MyHomePage()));
-    }
-  }
-*/
-/*
-    Future resetPassword() async {
-    try {
-      await FirebaseAuth.instance
-          .sendPasswordResetEmail(email: emailEditingController.text.trim());
-      Fluttertoast.showToast(
-        msg: "Password reset email sent",
-        backgroundColor: const Color(0XFF2356F6),
-        textColor: Colors.white,
-        fontSize: 14.0,
-      );
-      Navigator.of(context).pop();
-    } on FirebaseAuthException catch (e) {
-      Fluttertoast.showToast(
-        msg: e.message.toString(),
-        backgroundColor: const Color(0XFF2356F6),
-        textColor: Colors.white,
-        fontSize: 14.0,
-      );
-    }
-  }
-}
-*/
+
   void _signIn() {
     if (_isChecked) {
       box1.put('email', emailController.text);
