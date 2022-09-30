@@ -13,7 +13,10 @@ class StartSeite extends StatefulWidget {
 }
 
 class _StartSeiteState extends State<StartSeite> {
-  final GlobalKey<ScaffoldState> _drawerScaffoldKey = GlobalKey();
+  final GlobalKey<ScaffoldState> _drawerScaffoldKey1 =
+      GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _drawerScaffoldKey2 =
+      GlobalKey<ScaffoldState>();
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
@@ -33,22 +36,23 @@ class _StartSeiteState extends State<StartSeite> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _drawerScaffoldKey1,
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          onPressed: () {
-            if (_drawerScaffoldKey.currentState?.isDrawerOpen == false) {
-              _drawerScaffoldKey.currentState?.openDrawer();
-            } else {
-              _drawerScaffoldKey.currentState?.openEndDrawer();
-            }
-          },
           icon: const Icon(
             Icons.menu,
             color: Color(0XFF9AA1B4),
           ),
+          onPressed: () {
+            if (_drawerScaffoldKey2.currentState?.isDrawerOpen == true) {
+              Navigator.pop(context);
+            } else {
+              _drawerScaffoldKey2.currentState?.openDrawer();
+            }
+          },
         ),
         title: SizedBox(
           width: 375,
@@ -94,19 +98,18 @@ class _StartSeiteState extends State<StartSeite> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(22.0, 0.0, 0.0, 9.0),
+                    padding: const EdgeInsets.fromLTRB(22.0, 2.0, 0.0, 6.0),
                     child: SizedBox(
                       width: 30,
                       height: 10,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10.0)
-                        ),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10.0)),
                         child: Center(
                           child: SizedBox(
-                            width: 6,
-                            height: 6,
+                            width: 7,
+                            height: 7,
                             child: Container(
                               decoration: BoxDecoration(
                                 color: Colors.green,
@@ -125,113 +128,320 @@ class _StartSeiteState extends State<StartSeite> {
         ],
       ),
       body: Scaffold(
-        drawer: Drawer(
-          key: _drawerScaffoldKey,
-          elevation: 0,
-          width: 215,
-          backgroundColor: Colors.white,
-          child: ListView(
-            children: [
-              ListTile(
-                leading: Image.asset(
-                  'images/dashboard.png',
-                  color: const Color(0XFF394C66),
-                ),
-                title: const Text(
-                  'Dashboard',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Color(0XFF394C66),
+        key: _drawerScaffoldKey2,
+        drawer: SizedBox(
+          width: 225,
+          child: Drawer(
+            elevation: 0,
+            width: 215,
+            backgroundColor: const Color(0XFFF8FAFD),
+            child: ListView(
+              children: [
+                const Divider(height: 5, color: Color(0XFFF8FAFD)),
+                Card(
+                  margin: EdgeInsets.zero,
+                  elevation: 0,
+                  child: ClipPath(
+                    child: Container(
+                      height: 40,
+                      decoration: _selectedIndex == 0
+                          ? const BoxDecoration(
+                              color: Color(0XFFEFF4FA),
+                              border: Border(
+                                left: BorderSide(
+                                    color: Color(0XFF3663F2), width: 3),
+                              ),
+                            )
+                          : const BoxDecoration(
+                              color: Color(0XFFF8FAFD),
+                              border: Border(
+                                left: BorderSide(
+                                    color: Color(0XFFEFF4FA), width: 3),
+                              ),
+                            ),
+                      child: ListTile(
+                        contentPadding:
+                            const EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
+                        leading: Container(
+                          padding:
+                              const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
+                          child: ImageIcon(
+                            const AssetImage('images/dashboard.png'),
+                            color: _selectedIndex == 0
+                                ? const Color(0XFF3663F2)
+                                : const Color(0XFF394C66),
+                          ),
+                        ),
+                        title: Container(
+                          padding:
+                              const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
+                          child: Text(
+                            'Dashboard',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: _selectedIndex == 0
+                                  ? const Color(0XFF3663F2)
+                                  : const Color(0XFF394C66),
+                            ),
+                          ),
+                        ),
+                        onTap: () {
+                          setState(() {
+                            _selectedIndex = 0;
+                          });
+                        },
+                      ),
+                    ),
                   ),
                 ),
-                onTap: () {
-                  setState(() {
-                    _selectedIndex = 0;
-                  });
-                },
-              ),
-              ListTile(
-                leading: Image.asset(
-                  'images/messages.png',
-                  color: const Color(0XFF394C66),
-                ),
-                title: const Text(
-                  'Messages',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Color(0XFF394C66),
+                const Divider(height: 5, color: Color(0XFFF8FAFD)),
+                Card(
+                  margin: EdgeInsets.zero,
+                  elevation: 0,
+                  child: ClipPath(
+                    child: Container(
+                      height: 40,
+                      decoration: _selectedIndex == 1
+                          ? const BoxDecoration(
+                              color: Color(0XFFEFF4FA),
+                              border: Border(
+                                left: BorderSide(
+                                    color: Color(0XFF3663F2), width: 3),
+                              ),
+                            )
+                          : const BoxDecoration(
+                              color: Color(0XFFF8FAFD),
+                              border: Border(
+                                left: BorderSide(
+                                    color: Color(0XFFEFF4FA), width: 3),
+                              ),
+                            ),
+                      child: ListTile(
+                        contentPadding:
+                            const EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
+                        leading: Container(
+                          padding:
+                              const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
+                          child: ImageIcon(
+                            const AssetImage('images/messages.png'),
+                            color: _selectedIndex == 1
+                                ? const Color(0XFF3663F2)
+                                : const Color(0XFF394C66),
+                          ),
+                        ),
+                        title: Container(
+                          padding:
+                              const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
+                          child: Text(
+                            'Messages',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: _selectedIndex == 1
+                                  ? const Color(0XFF3663F2)
+                                  : const Color(0XFF394C66),
+                            ),
+                          ),
+                        ),
+                        onTap: () {
+                          setState(() {
+                            _selectedIndex = 1;
+                          });
+                        },
+                      ),
+                    ),
                   ),
                 ),
-                onTap: () {
-                  setState(() {
-                    _selectedIndex = 1;
-                  });
-                },
-              ),
-              ListTile(
-                leading: Image.asset(
-                  'images/details.png',
-                  color: const Color(0XFF394C66),
-                ),
-                title: const Text(
-                  'Details',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Color(0XFF394C66),
+                const Divider(height: 5, color: Color(0XFFF8FAFD)),
+                Card(
+                  margin: EdgeInsets.zero,
+                  elevation: 0,
+                  child: ClipPath(
+                    child: Container(
+                      height: 40,
+                      decoration: _selectedIndex == 2
+                          ? const BoxDecoration(
+                              color: Color(0XFFEFF4FA),
+                              border: Border(
+                                left: BorderSide(
+                                    color: Color(0XFF3663F2), width: 3),
+                              ),
+                            )
+                          : const BoxDecoration(
+                              color: Color(0XFFF8FAFD),
+                              border: Border(
+                                left: BorderSide(
+                                    color: Color(0XFFEFF4FA), width: 3),
+                              ),
+                            ),
+                      child: ListTile(
+                        contentPadding:
+                            const EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
+                        leading: Container(
+                          padding:
+                              const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
+                          child: ImageIcon(
+                            const AssetImage('images/details.png'),
+                            color: _selectedIndex == 2
+                                ? const Color(0XFF3663F2)
+                                : const Color(0XFF394C66),
+                          ),
+                        ),
+                        title: Container(
+                          padding:
+                              const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
+                          child: Text(
+                            'Details',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: _selectedIndex == 2
+                                  ? const Color(0XFF3663F2)
+                                  : const Color(0XFF394C66),
+                            ),
+                          ),
+                        ),
+                        onTap: () {
+                          setState(() {
+                            _selectedIndex = 2;
+                          });
+                        },
+                      ),
+                    ),
                   ),
                 ),
-                onTap: () {
-                  setState(() {
-                    _selectedIndex = 2;
-                  });
-                },
-              ),
-              ListTile(
-                leading: Image.asset(
-                  'images/folders.png',
-                  color: const Color(0XFF394C66),
-                ),
-                title: const Text(
-                  'Folders',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Color(0XFF394C66),
+                const Divider(height: 5, color: Color(0XFFF8FAFD)),
+                Card(
+                  margin: EdgeInsets.zero,
+                  elevation: 0,
+                  child: ClipPath(
+                    child: Container(
+                      height: 40,
+                      decoration: _selectedIndex == 3
+                          ? const BoxDecoration(
+                              color: Color(0XFFEFF4FA),
+                              border: Border(
+                                left: BorderSide(
+                                    color: Color(0XFF3663F2), width: 3),
+                              ),
+                            )
+                          : const BoxDecoration(
+                              color: Color(0XFFF8FAFD),
+                              border: Border(
+                                left: BorderSide(
+                                    color: Color(0XFFEFF4FA), width: 3),
+                              ),
+                            ),
+                      child: ListTile(
+                        contentPadding:
+                            const EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
+                        leading: Container(
+                          padding:
+                              const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
+                          child: ImageIcon(
+                            const AssetImage('images/folders.png'),
+                            color: _selectedIndex == 3
+                                ? const Color(0XFF3663F2)
+                                : const Color(0XFF394C66),
+                          ),
+                        ),
+                        title: Container(
+                          padding:
+                              const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
+                          child: Text(
+                            'Folders',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: _selectedIndex == 3
+                                  ? const Color(0XFF3663F2)
+                                  : const Color(0XFF394C66),
+                            ),
+                          ),
+                        ),
+                        onTap: () {
+                          setState(() {
+                            _selectedIndex = 3;
+                          });
+                        },
+                      ),
+                    ),
                   ),
                 ),
-                onTap: () {
-                  setState(() {
-                    _selectedIndex = 3;
-                  });
-                },
-              ),
-              ListTile(
-                leading: Image.asset(
-                  'images/settings.png',
-                  color: const Color(0XFF394C66),
-                ),
-                title: const Text(
-                  'Settings',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Color(0XFF394C66),
+                const Divider(height: 5, color: Color(0XFFF8FAFD)),
+                Card(
+                  margin: EdgeInsets.zero,
+                  elevation: 0,
+                  child: ClipPath(
+                    child: Container(
+                      height: 40,
+                      decoration: _selectedIndex == 4
+                          ? const BoxDecoration(
+                              color: Color(0XFFEFF4FA),
+                              border: Border(
+                                left: BorderSide(
+                                    color: Color(0XFF3663F2), width: 3),
+                              ),
+                            )
+                          : const BoxDecoration(
+                              color: Color(0XFFF8FAFD),
+                              border: Border(
+                                left: BorderSide(
+                                    color: Color(0XFFEFF4FA), width: 3),
+                              ),
+                            ),
+                      child: ListTile(
+                        contentPadding:
+                            const EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
+                        leading: Container(
+                          padding:
+                              const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
+                          child: ImageIcon(
+                            const AssetImage('images/settings.png'),
+                            color: _selectedIndex == 4
+                                ? const Color(0XFF3663F2)
+                                : const Color(0XFF394C66),
+                          ),
+                        ),
+                        title: Container(
+                          padding:
+                              const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
+                          child: Text(
+                            'Settings',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: _selectedIndex == 4
+                                  ? const Color(0XFF3663F2)
+                                  : const Color(0XFF394C66),
+                            ),
+                          ),
+                        ),
+                        onTap: () {
+                          setState(() {
+                            _selectedIndex = 4;
+                          });
+                        },
+                      ),
+                    ),
                   ),
                 ),
-                onTap: () {
-                  setState(() {
-                    _selectedIndex = 4;
-                  });
-                },
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         body: Center(
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          elevation: 0,
+        bottomNavigationBar: Container(
+          height: 50,
+          color: const Color(0XFFEFF4FA),
+          padding: const EdgeInsets.fromLTRB(60.0, 0.0, 60.0, 0.0),
+          child: BottomNavigationBar(
+            elevation: 0,
             showSelectedLabels: false,
-            showUnselectedLabels: false,
+            selectedFontSize: 0,
             backgroundColor: const Color(0XFFEFF4FA),
             currentIndex: _selectedIndex,
             type: BottomNavigationBarType.fixed,
@@ -240,7 +450,8 @@ class _StartSeiteState extends State<StartSeite> {
               BottomNavigationBarItem(
                 activeIcon: Ink(
                   decoration: BoxDecoration(
-                    border: Border.all( color: const Color(0XFF3663F2), width: 2.0),
+                    border:
+                        Border.all(color: const Color(0XFF3663F2), width: 2.0),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: const Padding(
@@ -252,15 +463,16 @@ class _StartSeiteState extends State<StartSeite> {
                   ),
                 ),
                 icon: const ImageIcon(
-                      AssetImage('images/dashboard.png'),
-                      color: Color(0XFF394C66),
-                    ),
+                  AssetImage('images/dashboard.png'),
+                  color: Color(0XFF394C66),
+                ),
                 label: '',
               ),
               BottomNavigationBarItem(
                 activeIcon: Ink(
                   decoration: BoxDecoration(
-                    border: Border.all( color: const Color(0XFF3663F2), width: 2.0),
+                    border:
+                        Border.all(color: const Color(0XFF3663F2), width: 2.0),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: const Padding(
@@ -272,15 +484,16 @@ class _StartSeiteState extends State<StartSeite> {
                   ),
                 ),
                 icon: const ImageIcon(
-                      AssetImage('images/messages.png'),
-                      color: Color(0XFF394C66),
-                    ),
+                  AssetImage('images/messages.png'),
+                  color: Color(0XFF394C66),
+                ),
                 label: '',
               ),
               BottomNavigationBarItem(
                 activeIcon: Ink(
                   decoration: BoxDecoration(
-                    border: Border.all( color: const Color(0XFF3663F2), width: 2.0),
+                    border:
+                        Border.all(color: const Color(0XFF3663F2), width: 2.0),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: const Padding(
@@ -292,15 +505,16 @@ class _StartSeiteState extends State<StartSeite> {
                   ),
                 ),
                 icon: const ImageIcon(
-                      AssetImage('images/details.png'),
-                      color: Color(0XFF394C66),
-                    ),
+                  AssetImage('images/details.png'),
+                  color: Color(0XFF394C66),
+                ),
                 label: '',
               ),
               BottomNavigationBarItem(
                 activeIcon: Ink(
                   decoration: BoxDecoration(
-                    border: Border.all( color: const Color(0XFF3663F2), width: 2.0),
+                    border:
+                        Border.all(color: const Color(0XFF3663F2), width: 2.0),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: const Padding(
@@ -312,15 +526,16 @@ class _StartSeiteState extends State<StartSeite> {
                   ),
                 ),
                 icon: const ImageIcon(
-                      AssetImage('images/folders.png'),
-                      color: Color(0XFF394C66),
-                    ),
+                  AssetImage('images/folders.png'),
+                  color: Color(0XFF394C66),
+                ),
                 label: '',
               ),
               BottomNavigationBarItem(
                 activeIcon: Ink(
                   decoration: BoxDecoration(
-                    border: Border.all( color: const Color(0XFF3663F2), width: 2.0),
+                    border:
+                        Border.all(color: const Color(0XFF3663F2), width: 2.0),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: const Padding(
@@ -332,14 +547,15 @@ class _StartSeiteState extends State<StartSeite> {
                   ),
                 ),
                 icon: const ImageIcon(
-                      AssetImage('images/settings.png'),
-                      color: Color(0XFF394C66),
-                    ),
+                  AssetImage('images/settings.png'),
+                  color: Color(0XFF394C66),
+                ),
                 label: '',
               ),
             ],
           ),
         ),
+      ),
     );
   }
 }
