@@ -1,4 +1,7 @@
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:yartu_application/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:yartu_application/dashboard.dart';
 import 'package:yartu_application/details.dart';
 import 'package:yartu_application/folders.dart';
@@ -13,11 +16,14 @@ class StartSeite extends StatefulWidget {
 }
 
 class _StartSeiteState extends State<StartSeite> {
+  //final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final GlobalKey<ScaffoldState> _drawerScaffoldKey1 =
       GlobalKey<ScaffoldState>();
   final GlobalKey<ScaffoldState> _drawerScaffoldKey2 =
       GlobalKey<ScaffoldState>();
   int _selectedIndex = 0;
+  var nameValue = '';
+  var surnameValue = '';
 
   static const List<Widget> _widgetOptions = <Widget>[
     DashBoard(),
@@ -32,6 +38,17 @@ class _StartSeiteState extends State<StartSeite> {
       _selectedIndex = index;
     });
   }
+
+  /*firstLetters() {
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc('rrabianurtunen@gmail.com')
+        .get()
+        .then((value) {
+      nameValue = value.data()!['name'];
+      surnameValue = value.data()!['surname'];
+    });
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +106,7 @@ class _StartSeiteState extends State<StartSeite> {
                     backgroundColor: Color(0XFFF1AE04),
                     child: Text(
                       'RT',
+                      //nameValue.trim() + surnameValue.trim(),
                       style: TextStyle(
                         color: Colors.white,
                         fontStyle: FontStyle.normal,
