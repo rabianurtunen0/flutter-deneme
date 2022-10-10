@@ -172,7 +172,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Row(
                     children: [
                       const Padding(
-                        padding: EdgeInsets.fromLTRB(5.0, 28.0, 115.0, 0.0),
+                        padding: EdgeInsets.fromLTRB(5.0, 20.0, 115.0, 0.0),
                         child: Text(
                           "Password",
                           style: TextStyle(
@@ -186,7 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       TextButton(
                         child: const Padding(
-                          padding: EdgeInsets.fromLTRB(0.0, 28.0, 0.0, 0.0),
+                          padding: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 0.0),
                           child: Text(
                             'Forgot Password?',
                             style: TextStyle(
