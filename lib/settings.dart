@@ -14,7 +14,7 @@ class _SettingsState extends State<Settings> {
       backgroundColor: Colors.white,
       body: Center(
         child: Text(
-          '555555555555'
+          ''
         ),
       ),
     );
