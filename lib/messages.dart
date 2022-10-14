@@ -162,7 +162,7 @@ class _MessagesState extends State<Messages> {
                       ),
                     ),
                     Container(
-                      width:158 ,
+                      width: 158,
                       margin: const EdgeInsets.fromLTRB(8.0, 16.0, 0.0, 0.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -177,7 +177,6 @@ class _MessagesState extends State<Messages> {
                             ),
                           ),
                           Container(
-
                             margin:
                                 const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
                             child: const Text(
@@ -195,43 +194,43 @@ class _MessagesState extends State<Messages> {
                       ),
                     ),
                     Container(
-                        padding: const EdgeInsets.fromLTRB(17.0, 0.0, 0.0, 8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.fromLTRB(
-                                  54.0, 0.0, 0.0, 1.0),
-                              child: const Icon(
-                                CupertinoIcons.paperclip,
-                                color: Color(0XFF9AA1B4),
-                                size: 10,
-                              ),
+                      padding: const EdgeInsets.fromLTRB(17.0, 0.0, 0.0, 8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            padding:
+                                const EdgeInsets.fromLTRB(54.0, 0.0, 0.0, 1.0),
+                            child: const Icon(
+                              CupertinoIcons.paperclip,
+                              color: Color(0XFF9AA1B4),
+                              size: 10,
                             ),
-                            const Text(
-                              "1 November 2021 • 14.55",
+                          ),
+                          const Text(
+                            "1 November 2021 • 14.55",
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 6,
+                              color: Color(0XFF394C66),
+                            ),
+                          ),
+                          Container(
+                            padding:
+                                const EdgeInsets.fromLTRB(25.0, 0.0, 0.0, 0.0),
+                            child: const Text(
+                              "cihat@yartu.io",
                               textAlign: TextAlign.right,
                               style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 6,
-                                color: Color(0XFF394C66),
-                              ),
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 6,
+                                  color: Color(0XFF394C66)),
                             ),
-                            Container(
-                              padding: const EdgeInsets.fromLTRB(
-                                  25.0, 0.0, 0.0, 0.0),
-                              child: const Text(
-                                "cihat@yartu.io",
-                                textAlign: TextAlign.right,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 6,
-                                    color: Color(0XFF394C66)),
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
+                    ),
                   ],
                 ),
               ),
@@ -299,43 +298,43 @@ class _MessagesState extends State<Messages> {
                       ),
                     ),
                     Container(
-                        padding: const EdgeInsets.fromLTRB(17.0, 0.0, 0.0, 8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.fromLTRB(
-                                  54.0, 0.0, 0.0, 1.0),
-                              child: const Icon(
-                                CupertinoIcons.paperclip,
-                                color: Color(0XFF9AA1B4),
-                                size: 10,
-                              ),
+                      padding: const EdgeInsets.fromLTRB(17.0, 0.0, 0.0, 8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            padding:
+                                const EdgeInsets.fromLTRB(54.0, 0.0, 0.0, 1.0),
+                            child: const Icon(
+                              CupertinoIcons.paperclip,
+                              color: Color(0XFF9AA1B4),
+                              size: 10,
                             ),
-                            const Text(
-                              "1 November 2021 • 14.55",
+                          ),
+                          const Text(
+                            "1 November 2021 • 14.55",
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 6,
+                              color: Color(0XFF394C66),
+                            ),
+                          ),
+                          Container(
+                            padding:
+                                const EdgeInsets.fromLTRB(25.0, 0.0, 0.0, 0.0),
+                            child: const Text(
+                              "cihat@yartu.io",
                               textAlign: TextAlign.right,
                               style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 6,
-                                color: Color(0XFF394C66),
-                              ),
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 6,
+                                  color: Color(0XFF394C66)),
                             ),
-                            Container(
-                              padding: const EdgeInsets.fromLTRB(
-                                  25.0, 0.0, 0.0, 0.0),
-                              child: const Text(
-                                "cihat@yartu.io",
-                                textAlign: TextAlign.right,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 6,
-                                    color: Color(0XFF394C66)),
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
+                    ),
                   ],
                 ),
               ),
@@ -391,43 +390,43 @@ class _MessagesState extends State<Messages> {
                       ),
                     ),
                     Container(
-                        padding: const EdgeInsets.fromLTRB(17.0, 0.0, 0.0, 8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.fromLTRB(
-                                  54.0, 0.0, 0.0, 1.0),
-                              child: const Icon(
-                                CupertinoIcons.paperclip,
-                                color: Color(0XFF9AA1B4),
-                                size: 10,
-                              ),
+                      padding: const EdgeInsets.fromLTRB(17.0, 0.0, 0.0, 8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            padding:
+                                const EdgeInsets.fromLTRB(54.0, 0.0, 0.0, 1.0),
+                            child: const Icon(
+                              CupertinoIcons.paperclip,
+                              color: Color(0XFF9AA1B4),
+                              size: 10,
                             ),
-                            const Text(
-                              "1 November 2021 • 14.55",
+                          ),
+                          const Text(
+                            "1 November 2021 • 14.55",
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 6,
+                              color: Color(0XFF394C66),
+                            ),
+                          ),
+                          Container(
+                            padding:
+                                const EdgeInsets.fromLTRB(25.0, 0.0, 0.0, 0.0),
+                            child: const Text(
+                              "cihat@yartu.io",
                               textAlign: TextAlign.right,
                               style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 6,
-                                color: Color(0XFF394C66),
-                              ),
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 6,
+                                  color: Color(0XFF394C66)),
                             ),
-                            Container(
-                              padding: const EdgeInsets.fromLTRB(
-                                  25.0, 0.0, 0.0, 0.0),
-                              child: const Text(
-                                "cihat@yartu.io",
-                                textAlign: TextAlign.right,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 6,
-                                    color: Color(0XFF394C66)),
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
+                    ),
                   ],
                 ),
               ),
@@ -495,43 +494,43 @@ class _MessagesState extends State<Messages> {
                       ),
                     ),
                     Container(
-                        padding: const EdgeInsets.fromLTRB(17.0, 0.0, 0.0, 8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.fromLTRB(
-                                  54.0, 0.0, 0.0, 1.0),
-                              child: const Icon(
-                                CupertinoIcons.paperclip,
-                                color: Color(0XFF9AA1B4),
-                                size: 10,
-                              ),
+                      padding: const EdgeInsets.fromLTRB(17.0, 0.0, 0.0, 8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            padding:
+                                const EdgeInsets.fromLTRB(54.0, 0.0, 0.0, 1.0),
+                            child: const Icon(
+                              CupertinoIcons.paperclip,
+                              color: Color(0XFF9AA1B4),
+                              size: 10,
                             ),
-                            const Text(
-                              "1 November 2021 • 14.55",
+                          ),
+                          const Text(
+                            "1 November 2021 • 14.55",
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 6,
+                              color: Color(0XFF394C66),
+                            ),
+                          ),
+                          Container(
+                            padding:
+                                const EdgeInsets.fromLTRB(25.0, 0.0, 0.0, 0.0),
+                            child: const Text(
+                              "cihat@yartu.io",
                               textAlign: TextAlign.right,
                               style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 6,
-                                color: Color(0XFF394C66),
-                              ),
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 6,
+                                  color: Color(0XFF394C66)),
                             ),
-                            Container(
-                              padding: const EdgeInsets.fromLTRB(
-                                  25.0, 0.0, 0.0, 0.0),
-                              child: const Text(
-                                "cihat@yartu.io",
-                                textAlign: TextAlign.right,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 6,
-                                    color: Color(0XFF394C66)),
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
+                    ),
                   ],
                 ),
               ),
