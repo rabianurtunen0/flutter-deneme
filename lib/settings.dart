@@ -13,9 +13,7 @@ class _SettingsState extends State<Settings> {
     return const Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Text(
-          ''
-        ),
+        child: Text(''),
       ),
     );
   }
