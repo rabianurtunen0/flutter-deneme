@@ -5,7 +5,6 @@ import 'package:yartu_application/details.dart';
 import 'package:yartu_application/folders.dart';
 import 'package:yartu_application/settings.dart';
 
-
 class DrawerBar extends StatefulWidget {
   const DrawerBar({Key? key}) : super(key: key);
 
@@ -21,19 +20,19 @@ class _DrawerBarState extends State<DrawerBar> {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 0.0, 
+              horizontal: 0.0,
               vertical: 10.0,
             ),
             child: MaterialButton(
               onPressed: () {
-                Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => const DashBoard()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const DashBoard()));
               },
               child: Row(
                 children: [
                   Image.asset(
-                    'images/dashboard.dart', 
-                    color: const Color(0XFF394C66),                 
+                    'images/dashboard.dart',
+                    color: const Color(0XFF394C66),
                   ),
                   const Text(
                     'Dashboard',
@@ -48,19 +47,19 @@ class _DrawerBarState extends State<DrawerBar> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 0.0, 
+              horizontal: 0.0,
               vertical: 10.0,
             ),
             child: MaterialButton(
               onPressed: () {
-                Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => const Messages()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Messages()));
               },
               child: Row(
                 children: [
                   Image.asset(
-                    'images/messages.dart', 
-                    color: const Color(0XFF394C66),                 
+                    'images/messages.dart',
+                    color: const Color(0XFF394C66),
                   ),
                   const Text(
                     'Messages',
@@ -75,19 +74,19 @@ class _DrawerBarState extends State<DrawerBar> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 0.0, 
+              horizontal: 0.0,
               vertical: 10.0,
             ),
             child: MaterialButton(
               onPressed: () {
-                Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => const Details()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Details()));
               },
               child: Row(
                 children: [
                   Image.asset(
-                    'images/details.dart', 
-                    color: const Color(0XFF394C66),                 
+                    'images/details.dart',
+                    color: const Color(0XFF394C66),
                   ),
                   const Text(
                     'Details',
@@ -102,19 +101,19 @@ class _DrawerBarState extends State<DrawerBar> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 0.0, 
+              horizontal: 0.0,
               vertical: 10.0,
             ),
             child: MaterialButton(
               onPressed: () {
-                Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => const Folders()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Folders()));
               },
               child: Row(
                 children: [
                   Image.asset(
-                    'images/folders.dart', 
-                    color: const Color(0XFF394C66),                 
+                    'images/folders.dart',
+                    color: const Color(0XFF394C66),
                   ),
                   const Text(
                     'Folders',
@@ -129,19 +128,19 @@ class _DrawerBarState extends State<DrawerBar> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 0.0, 
+              horizontal: 0.0,
               vertical: 10.0,
             ),
             child: MaterialButton(
               onPressed: () {
-                Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => const Settings()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Settings()));
               },
               child: Row(
                 children: [
                   Image.asset(
-                    'images/settings.dart', 
-                    color: const Color(0XFF394C66),                 
+                    'images/settings.dart',
+                    color: const Color(0XFF394C66),
                   ),
                   const Text(
                     'Settings',
@@ -153,7 +152,7 @@ class _DrawerBarState extends State<DrawerBar> {
                 ],
               ),
             ),
-          ),   
+          ),
         ],
       ),
     );
