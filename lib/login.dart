@@ -6,7 +6,6 @@ import 'package:yartu_application/startseite.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:yartu_application/passwordreset.dart';
-//import 'package:get/get.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -21,7 +20,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final usernameController = TextEditingController();
 
   bool _isVisible = true;
   void _updateStatus() {
@@ -117,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     color: Colors.white,
                     margin: const EdgeInsets.fromLTRB(5.0, 20.0, 0.0, 4.0),
                     child: const Text(
-                      'Email or Username',
+                      'Email',
                       style: TextStyle(
                         color: Color(0XFF394C66),
                         fontStyle: FontStyle.normal,
@@ -302,8 +300,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       minWidth: MediaQuery.of(context).size.width,
                       onPressed: () {
                         if (_fromKey.currentState!.validate()) {
-                          signIn(emailController.text, usernameController.text,
-                              passwordController.text);
+                          signIn(emailController.text, passwordController.text);
                         }
                         _signIn();
                       },
@@ -383,9 +380,8 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-
-  void signIn(String email, String username, String password) async {
-    if (_fromKey.currentState!.validate()) { 
+  void signIn(String email, String password) async {
+    if (_fromKey.currentState!.validate()) {
       await _auth
           .signInWithEmailAndPassword(email: email, password: password)
           .then((email) async => {
@@ -398,19 +394,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (context) => const StartSeite()))
               })
-              .then((username) async => {
-                Fluttertoast.showToast(
-                  msg: "Login succesfully :) ",
-                  backgroundColor: const Color(0XFF2356F6),
-                  textColor: Colors.white,
-                  fontSize: 14.0,
-                ),
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const StartSeite()))
-              })
           .catchError((e) {
         Fluttertoast.showToast(
-          msg: e!.message,
+          msg: "Sorry, you couldn't not log in. Please check your information.",
           backgroundColor: const Color(0XFF2356F6),
           textColor: Colors.white,
           fontSize: 14.0,
