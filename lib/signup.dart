@@ -6,7 +6,7 @@ import 'package:yartu_application/model/user_model.dart';
 import 'package:yartu_application/login.dart';
 
 class SignUp extends StatefulWidget {
-  const SignUp ({Key? key}) : super(key: key);
+  const SignUp({Key? key}) : super(key: key);
 
   @override
   State<SignUp> createState() => _SignUpState();
