@@ -131,6 +131,7 @@ class _PasswordResetState extends State<PasswordReset> {
         textColor: Colors.white,
         fontSize: 14.0,
       );
+      // ignore: use_build_context_synchronously
       Navigator.of(context).pop();
     } on FirebaseAuthException catch (e) {
       Fluttertoast.showToast(
